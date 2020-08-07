@@ -34,19 +34,19 @@
                     @csrf
                     <div class="form-group">
                         <label for="design-title">Designnaam</label>
-                        <input class="form-control" id="design-title" name="design-title" placeholder="Vul hier uw design naam in">
+                        <input class="form-control" id="design-title" name="design-title" placeholder="Vul hier uw design naam in" required>
                     </div>
                     <div class="form-group">
                         <label for="client-name">Klantnaam (voor referentie) </label>
-                        <input type="text" class="form-control" name="client-name" id="client-name" placeholder="Vul hier uw klant zijn/haar naam in">
+                        <input type="text" class="form-control" name="client-name" id="client-name" placeholder="Vul hier uw klant zijn/haar naam in" required>
                     </div>
                     <div class="form-group">
                         <label for="design-info">Design info</label>
-                        <textarea class="form-control" id="design-info" name="design-info" rows="5"></textarea>
+                        <textarea class="form-control" id="design-info" name="design-info" rows="5" required></textarea>
                     </div>
                     <div class="form-group">
                         <label for="design-file">Design </label>
-                        <input type="file" class="form-control" name="design-file" id="design-file" capture="environment">
+                        <input type="file" class="form-control" name="design-file" id="design-file" required>
                     </div>
                     <input id="contract-submit-button" type="submit" class="form-control" value="Voeg design toe">
                 </form>
@@ -66,7 +66,7 @@
                         <h5>{{ucwords($design->customer)}}</h5>
                         <p>{{$design->design_info}}</p>
                     </div>
-                    <a href="/gallery/edit/{{$design->id}}"><div class="edit-design-div">Edit</div></a>
+                    <a href="{{route('galleryeditdesign',$design->id)}}"><div class="edit-design-div">Edit</div></a>
 
                 </div>
             @endforeach

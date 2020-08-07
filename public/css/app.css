@@ -11244,7 +11244,8 @@ a.text-dark:focus {
   background-color: #fff;;
 }
 .design-div img{
-  width:50%;
+  width:200px;
+  height:200px;
   float:left;
 }
 .design-div-info{
@@ -11261,7 +11262,17 @@ a.text-dark:focus {
   .design-div{
     width:47.5%;
     margin-left:2.5%;
+    
   }
+
+}
+@media only screen and (max-width: 1000px) {
+  .design-div img{
+    width:150px;
+    height:150px;
+    float:left;
+  }
+
 }
 @media only screen and (max-width: 800px) {
   .design-div{
@@ -11273,6 +11284,12 @@ a.text-dark:focus {
   }
   .design-div-info h5{
     font-size:.8rem;
+  }
+  .design-div img{
+    max-width:50%;
+    width:100%;
+    height:auto;
+    float:left;
   }
 }
 #no-designs-yet{

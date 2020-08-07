@@ -10,7 +10,7 @@
         </div>
     </div>
   
-        <a href="/profile/edit/{{$activeUser->id}}" >
+        <a href="{{route('profileEditPage',$activeUser->id)}}" >
              <p id="profile-edit-button">Edit</p> 
         </a>
     @if($activeUser->role == "artist")
@@ -23,7 +23,7 @@
                 <p>We doen dit zodat u als artiest beschermd bent</p>
             </div>
             <div id="no-contract-button">
-                <a href="/contract">Maak nu een contract aan</a>
+                <a href="{{route('contract')}}">Maak nu een contract aan</a>
             </div>
         </div>
         @endif
@@ -68,7 +68,7 @@
                     @if($count > 0)
                         <h2>Uw goedgekeurde designs  </h2>
                         @foreach ($approvedDesigns as $item)
-                        <img class="recent-designs" src="{{$item->design_path}}">
+                        <img class="recent-designs" src="{{asset($item->design_path)}}">
                         @endforeach
                     @else
                        

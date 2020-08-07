@@ -37,7 +37,7 @@
                         <p>We doen dit zodat u als artiest beschermd bent</p>
                     </div>
                     <div id="no-contract-button">
-                        <a href="/contract">Maak nu een contract aan</a>
+                    <a href="{{route('contract')}}">Maak nu een contract aan</a>
                     </div>
                 </div>
             @endif

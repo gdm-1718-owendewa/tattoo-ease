@@ -40,7 +40,13 @@ class AdminController extends Controller
         }
     }
     public function usersDelete($id){
-        $users = Query::deleteUserById($id);
+        Query::deleteUserById($id);
+        Query::deleteDesignsByUserId($id);
+        Query::deletecontactByUserId($id);
+        Query::deleteContractByUserId($id);
+        Query::deletePendingByUserId($id);
+        Query::deleteAcceptedByUserId($id);
+        Query::deleteDeclinedByUserId($id);
         return redirect()->back()->with('succes','User deleted');
     }
     public function designs(){

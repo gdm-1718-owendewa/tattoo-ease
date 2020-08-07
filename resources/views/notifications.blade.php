@@ -18,7 +18,7 @@
                 </ul>
             </div>
         @endif
-        <p>Vergeet niet u kan maar het aantal toegelaten afwijzigen van uw artiest zijn/haar contrect uit gebruiken.</p>
+        <p>Vergeet niet u kan maar het aantal toegelaten afwijzigen van uw artiest zijn/haar contract gebruiken.</p>
         <p>Wees duidelijk in de reden waarom u dit design hebt afgewezen.</p>
 
         <form id="notification-form" method="POST">
@@ -45,7 +45,7 @@
             <div class="notification-div clearfix">
                 <div class="notification-div-image"> <img  class="notification-image" value="{{asset($n->design_path)}}" src="{{asset($n->design_path)}}"></div>
                 <div class="notification-div-message"><p>{{$n->artistInfo->name}} Heeft u een nieuw design gestuurd</p></div>
-            <div class="notification-div-buttons"><a class="btn btn-info btn-show-design" href="tattoo-ease://url?{{public_path($n->design_path)}}"><img src="{{asset('/icons/show.svg')}}"></a>@if($n->decline_count < $n->change_limit)<a class="btn btn-danger decline-design" href="#" value="/{{$n->id}}/{{$n->artist_id}}/{{$n->design_id}}/{{auth()->user()->id}}"><img value="/{{$n->id}}/{{$n->artist_id}}/{{$n->design_id}}/{{auth()->user()->id}}" src="{{asset('/icons/decline.svg')}}"></a>@endif<a class="btn btn-success" href="/accept-design/{{$n->id}}/{{$n->artist_id}}/{{$n->design_id}}/{{auth()->user()->id}}" onclick="return confirm('Bent u zeker dat u dit design wilt accepteren')"><img src="{{asset('/icons/check.svg')}}"></a></div>
+            <div class="notification-div-buttons"><a class="btn btn-info btn-show-design" onclick="return confirm('Deze link werkt enkel op IOS browsers met de IOS app installed')" href="tattoo-ease://url?{{asset($n->design_path)}}"><img src="{{asset('/icons/show.svg')}}"></a>@if($n->decline_count < $n->change_limit)<a class="btn btn-danger decline-design" href="#" value="{{route('declineDesign',['notification_id' => $n->id, 'artist_id' => $n->artist_id, 'design_id' => $n->design_id, 'client_id' => auth()->user()->id])}}"><img value="/{{$n->id}}/{{$n->artist_id}}/{{$n->design_id}}/{{auth()->user()->id}}" src="{{asset('/icons/decline.svg')}}"></a>@endif<a class="btn btn-success" href="{{route('acceptDesign',['notification_id' => $n->id, 'artist_id' => $n->artist_id, 'design_id' => $n->design_id, 'client_id' => auth()->user()->id])}}" onclick="return confirm('Bent u zeker dat u dit design wilt accepteren')"><img src="{{asset('/icons/check.svg')}}"></a></div>
             </div>
         @endforeach
     </div>

@@ -35,6 +35,40 @@ class Query extends Model
         ->where('id', '=', $id)
         ->delete();
     }
+    public static function deleteDesignsByUserId($id){
+        return DB::table('designs')
+        ->where('artist_id', '=', $id)
+        ->delete();
+    }
+    public static function deleteContractByUserId($id){
+        return DB::table('contract')
+        ->where('artist_id', '=', $id)
+        ->delete();
+    }
+    public static function deletecontactByUserId($id){
+        return DB::table('contacts')
+        ->where('contact_id', '=', $id)
+        ->orWhere('user_id', '=', $id)
+        ->delete();
+    }
+    public static function deletePendingByUserId($id){
+        return DB::table('pending_designs')
+        ->where('artist_id', '=', $id)
+        ->orWhere('client_id', '=', $id)
+        ->delete();
+    }
+    public static function deleteAcceptedByUserId($id){
+        return DB::table('approved_designs')
+        ->where('artist_id', '=', $id)
+        ->orWhere('client_id', '=', $id)
+        ->delete();
+    }
+    public static function deleteDeclinedByUserId($id){
+        return DB::table('declined_designs')
+        ->where('artist_id', '=', $id)
+        ->orWhere('client_id', '=', $id)
+        ->delete();
+    }
     public static function getAllArtists(){
         return DB::table('users')
         ->where('role', '=', 'artist')
@@ -233,13 +267,23 @@ class Query extends Model
             'shopadress' => $shopadress
         ]);
     }
-    public static function updateUserProfile($id,$name,$email,$password,$tel){
+    public static function updateUserProfileWithPass($id,$name,$email,$password,$tel){
         return DB::table('users')
         ->where('id', '=', $id)
         ->update([
             'name' => $name,
             'email' => $email,
             'password' => Hash::make($password),
+            'tel' => $tel
+        ]);
+    }
+    public static function updateUserProfileSamePass($id,$name,$email,$password,$tel){
+        return DB::table('users')
+        ->where('id', '=', $id)
+        ->update([
+            'name' => $name,
+            'email' => $email,
+            'password' => $password,
             'tel' => $tel
         ]);
     }

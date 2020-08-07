@@ -88,7 +88,7 @@ class ProfileController extends Controller
                 return redirect()->back()->with('succes','Profiel aangepast');
 
             }
-        }elseif($activeUser->role=="user"){
+        }elseif($activeUser->role=="user" || $activeUser->role=="admin"){
             $user_name = $request->input('user-name');
             $user_email = $request->input('user-email');
             $user_password = $request->input('user-password');
@@ -101,35 +101,12 @@ class ProfileController extends Controller
                 return redirect()->back()->with('fail','Gelieve elk wachtwoord veld in te vullen');
             }
             elseif($user_password == null && $user_password_confirm == null){
-                Query::updateUserProfile($activeUser->id,$user_name, $user_email, $activeUser->password, $user_tel);
+                Query::updateUserProfileSamePass($activeUser->id,$user_name, $user_email, $activeUser->password, $user_tel);
                 return redirect('/profile');
 
             }
             elseif($user_password != null && $user_password == $user_password_confirm){
-                Query::updateUserProfile($activeUser->id,$user_name, $user_email, $user_password, $user_tel);
-                return redirect('/profile');
-
-            }
-        }
-        elseif($activeUser->role=="admin"){
-            $user_name = $request->input('user-name');
-            $user_email = $request->input('user-email');
-            $user_password = $request->input('user-password');
-            $user_password_confirm = $request->input('user-password-confirm');
-            $user_tel = $request->input('user-tel');
-            if($user_password != null && $user_password != $user_password_confirm){
-                return redirect()->back()->with('fail','Wachtwoorden zijn niet hetzelfde');
-            }
-            elseif($user_password == null && $user_password_confirm != null){
-                return redirect()->back()->with('fail','Gelieve elk wachtwoord veld in te vullen');
-            }
-            elseif($user_password == null && $user_password_confirm == null){
-                Query::updateUserProfile($activeUser->id,$user_name, $user_email, $activeUser->password, $user_tel);
-                return redirect('/profile');
-
-            }
-            elseif($user_password != null && $user_password == $user_password_confirm){
-                Query::updateUserProfile($activeUser->id,$user_name, $user_email, $user_password, $user_tel);
+                Query::updateUserProfileWithPass($activeUser->id,$user_name, $user_email, $user_password, $user_tel);
                 return redirect('/profile');
 
             }

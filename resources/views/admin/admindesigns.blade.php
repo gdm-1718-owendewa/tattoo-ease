@@ -17,7 +17,7 @@
                     <td>{{$d->design_title}}</td>
                     <td>{{$d->artistinfo->name}}</td>
                     <td>{{$d->artistinfo->tel}}</td>
-                    <td> <a class="btn "   style="background:#f1c33b"href="/gallery/edit/{{$d->id}}"><img src="{{asset('/icons/edit.svg')}}"></a><a class="btn btn-danger" onclick="return confirm('Bent u zeker dat u dit design wil verwijderen')" href="{{route('admin-designs-delete', $d->id)}}"><img src="{{asset('/icons/trash.svg')}}"></a></td>
+                    <td> <a class="btn "   style="background:#f1c33b"href="{{route('galleryeditdesign',$d->id)}}"><img src="{{asset('/icons/edit.svg')}}"></a><a class="btn btn-danger" onclick="return confirm('Bent u zeker dat u dit design wil verwijderen')" href="{{route('admin-designs-delete', $d->id)}}"><img src="{{asset('/icons/trash.svg')}}"></a></td>
             
             
                 </tr>

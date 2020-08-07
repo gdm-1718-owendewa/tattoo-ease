@@ -43,7 +43,7 @@
                         <h5>{{ucwords($design->customer)}}</h5>
                         <p>{{$design->design_info}}</p>
                     </div>
-                    <a href="/gallery/choosedesign/senddesign/{{$clientid}}/{{$design->id}}"><div class="choose-design-div">Send Design</div></a>
+                    <a href={{route('gallerysenddesign',['clientid' => $clientid, 'designid' => $design->id ])}}><div class="choose-design-div">Send Design</div></a>
                 </div>
                 
             @endforeach

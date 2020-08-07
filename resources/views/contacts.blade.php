@@ -83,7 +83,7 @@
                             <td>{{$artist->email}}</td>
                             <td>{{$artist->tel}}</td>
                         <td><a class="btn profile-contact-info-button" href="{{route('info-page', $artist->id)}}"><img src="{{asset('/icons/info.svg')}}"></a> 
-                        <a class="btn btn-success add-contact-button" href="#" value="{{$artist->id}}" data-change="{{$artist->contractinfo->change_limit}}" data-rules="{{$artist->contractinfo->general}}"><img src="{{asset('/icons/add.svg')}}"></a> 
+                        <a class="btn btn-success add-contact-button" href="#" value="{{route('addcontact', $artist->id)}}" data-change="{{$artist->contractinfo->change_limit}}" data-rules="{{$artist->contractinfo->general}}"><img src="{{asset('/icons/add.svg')}}"></a> 
                         </td>
                         </tr>
                     @endif

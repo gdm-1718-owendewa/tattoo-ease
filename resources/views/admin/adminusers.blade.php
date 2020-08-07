@@ -35,7 +35,7 @@
                 <td></td>
                 @endif
                 <td>
-                    <a class="btn profile-contact-info-button" href="{{route('info-page', $u->id)}}"><img src="{{asset('/icons/info.svg')}}"></a><a  class="btn btn-danger remove-contact-button" onclick="return confirm('Wilt u {{$u->name}} verwijderen als contact?')" href="{{route('admin-users-delete', $u->id)}}"><img src="{{asset('/icons/trash.svg')}}"></a><a class="btn" style="background:#f1c33b" href="{{route('admin-users-edit', $u->id)}}"><img src="{{asset('/icons/edit.svg')}}"></a> 
+                    <a class="btn profile-contact-info-button" href="{{route('info-page', $u->id)}}"><img src="{{asset('/icons/info.svg')}}"></a><a  class="btn btn-danger remove-contact-button" onclick="return confirm('Wilt u {{$u->name}} verwijderen?')" href="{{route('admin-users-delete', $u->id)}}"><img src="{{asset('/icons/trash.svg')}}"></a><a class="btn" style="background:#f1c33b" href="{{route('admin-users-edit', $u->id)}}"><img src="{{asset('/icons/edit.svg')}}"></a> 
                 </td>
             </tr>
             
